@@ -4,6 +4,12 @@ html {
   scroll-snap-type: y mandatory;
 }
 
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+
 body {
   font-family: 'Avenir', sans-serif; /* Set Avenir as the primary font, fallback to generic sans-serif */
   margin: 0;
@@ -12,13 +18,44 @@ body {
   line-height: 1.5; /* Adjust line height as needed */
   letter-spacing: 1.6px; /* Adjust letter spacing as needed */
   width: 100%;
+  box-sizing: border-box; /* Hack Box model */
+  scroll-snap-type: y mandatory;
+  font-size: 16px; /* 1rem = 10px */
 }
 
+ /* Responsive Styles */
+  @media (max-width: 768px) {
+    .titlemain h1,
+    .titlemain h2,
+    .titlemain h3 {
+      padding-left: 2rem;
+      font-size: calc(1.5rem + 1vw); /* Adjust font size based on viewport width */
+    }
+  
+    .text-style {
+      font-size: 1.2rem;
+    }
+  
+    .text-style ul {
+      padding-left: 4rem;
+      padding-right: 4rem;
+    }
+  }
+
+  .text-style span {
+    font-size: 2rem;
+  }
+
 nav {
-  background-color: #ffd4ac; /* Dark blue background color */
-  padding: 10px 0;
-  box-shadow: 0 2px 4px #ffd4ac;
   width: 100%;
+  display: flex;
+  justify-content: space-between; /* Distribute space between items */
+  align-items: center; /* Align items vertically */
+  padding: 20px 0; /* Add some padding */
+  flex-direction: column; /* Arrange navigation links vertically */
+  list-style: none; /* Remove default bullet points */
+  margin: 0; /* Remove default margin */
+  background-color: #ffd4ac;
 }
 
 .nav-divider {
@@ -37,9 +74,20 @@ nav {
 }
 
 .container {
-  max-width: auto;
+  max-width: 120rem;
   margin: 0 auto;
-  padding: 0 20px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;  /* Stacks items vertically */
+  align-items: center;  /* Centers items horizontally */
+  justify-content: space-between;  /* Distributes items evenly with space between */
+  width: 100%;
+}
+
+.container a{
+  text-decoration: none;
+  font-weight: 700;
+  color:var(--cyan);
 }
 
 .logo {
@@ -151,3 +199,128 @@ nav {
   text-align: left;
 }
 
+.flexbox-container {
+  display: flex;
+}
+
+.element1 {
+  float: left;
+  font-weight: bold;
+  padding: 10px;
+  border: 1px solid #ccc;
+  background-image: linear-gradient(to right, #4e2029, #623740);
+  width: 100%;
+
+}
+
+.element2 {
+  padding: 10px;
+  font-weight: bold;
+  border: 1px solid #ccc;
+  background-image: linear-gradient(to right, #4e2029, #623740);
+  width: 100%;
+}
+
+/* Mobile Devices (320px - 480px) */
+@media (max-width: 480px) {
+  /* Hide the logo on smaller screens */
+  .left-picture {
+    display: none;
+  }
+
+  /* Stack navbar elements vertically */
+  .nav {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  /* Adjust font sizes for smaller screens */
+  .titlemain h1 {
+    font-size: 2rem;
+  }
+
+  .titlemain h2 {
+    font-size: 2.5rem;
+  }
+
+  .titlemain h3 {
+    font-size: 1.2rem;
+  }
+}
+
+/* iPads & Tablets (481px - 768px) */
+@media (min-width: 481px) and (max-width: 768px) {
+  /* Similar styles as Mobile Devices with slight adjustments */
+  .titlemain h1 {
+    font-size: 2.5rem;
+  }
+
+  .titlemain h2 {
+    font-size: 3rem;
+  }
+
+  .titlemain h3 {
+    font-size: 1.3rem;
+  }
+}
+/* Responsive behavior using media queries */
+@media (max-width: 768px) {
+    /* Hide the logo on smaller screens */
+    
+    .left-picture {
+      display: none;
+    }
+  
+    /* Stack navbar elements vertically */
+    .nav {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+
+    /* Adjust font sizes for smaller screens */
+    .titlemain h1{
+        font-size: 3rem;
+    }
+    .titlemain h2{
+        font-size: 4rem;
+    }
+    .titlemain h3{
+        font-size: 1.5rem;
+    }
+}
+  
+@media (min-width: 768px) {
+    /* Show the logo on larger screens */
+    .left-picture {
+      display: block;
+      float: left; /* Maintain existing styling */
+      margin-right: 20px;
+      max-width: 100%; /* Ensure image scales responsively */
+      width: 25rem;
+    }
+}
+
+/* Desktops & Large Screens (1025px - 1200px) */
+@media (min-width: 1025px) and (max-width: 1200px) {
+  /* Adjust font sizes and layouts as needed for larger screens */
+  /* You can adjust these values based on your design preferences */
+  .titlemain h1 {
+    font-size: 3.5rem;
+  }
+
+  .titlemain h2 {
+    font-size: 4.5rem;
+  }
+}
+
+/* Extra Large Screens & TV (1201px and above) */
+@media (min-width: 1201px) {
+  /* Adjust font sizes and layouts as needed for very large screens */
+  /* You can adjust these values based on your design preferences */
+  .titlemain h1 {
+    font-size: 4rem;
+  }
+
+  .titlemain h2 {
+    font-size: 5rem;
+  }
+}
